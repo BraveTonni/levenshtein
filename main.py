@@ -4,6 +4,14 @@
 
 import pandas as pd
 
+def load_text(file_name: str) -> str:
+    """
+    Returns text from file in line
+    """
+    with open(file_name, "r", encoding="utf-8") as f:
+        return "".join(f.readlines()).strip()
+
+
 def get_distance(word1: str, word2: str) -> int:
     # для экономии памяти короткое слово ложим в столбцы
     if len(word1) > len(word2):
@@ -60,7 +68,7 @@ def search(text: str, query: str) -> list[tuple[str, int]]:
 
 
 def main():
-    text = "У Лукоморья дуб зелёный златая цепь на дубе том и днём и ночьюкот учёный все ходит по цепи кругом."
+    text = load_text("file.txt")
 
     while True:
         query = input("> ")
